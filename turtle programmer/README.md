@@ -1,0 +1,1 @@
+http://www.computercraft.info/forums2/index.php?/topic/12485-smart-programmer-021-easily-create-loopable-programs-w-build-in-persistence/

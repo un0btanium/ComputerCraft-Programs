@@ -1,0 +1,24 @@
+local monitor = peripheral.wrap("right")
+local glasses = peripheral.wrap("left")
+term.redirect(monitor)
+local OSwidth,OSheight = term.getSize()
+local sensor = peripheral.wrap("top")
+local colorHex = {0xFFFFFF,0xFF8800,0xFF8CFF,0x00FFFF,0xFFF700,0x00FF11,0xF7B5DE,0xBFBFBF,0x65A1D6,0xAF56B3,0x0000FF,0x754302,0x004000,0xFF0000,0x000000}
+
+function printCentered(str, ypos)
+ term.setCursorPos(OSwidth/2 - #str/2, ypos)
+ term.write(str)
+end
+
+while (true) do
+	local names = sensor.getPlayers()
+	term.clear()
+	glasses.clear()
+	term.setCursorPos(1, 1)
+	for i, n in pairs(names) do
+		printCentered(n.name, i)
+ 		glasses.addText(25,25+(i*30),n.name,colorHex[1])
+	end
+	glasses.sync()
+	os.sleep(5)
+end
